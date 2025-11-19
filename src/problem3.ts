@@ -6,7 +6,7 @@ class Person{
         this.age = age
     }
     getDetails():string{
-        return `Name: ${this.name}, Age: ${this.age}`
+        return `'Name: ${this.name}, Age: ${this.age}'`
     }
 }
 const person1 = new Person('John Doe', 20);
