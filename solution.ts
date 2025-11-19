@@ -1,4 +1,4 @@
-const formatValue = (value: string | number | boolean) => {
+const formatValue = (value: string | number | boolean): string | number | boolean | undefined => {
     if (typeof value === "string") {
         return value.toUpperCase()
     }
@@ -9,39 +9,37 @@ const formatValue = (value: string | number | boolean) => {
         return !value;
     }
 }
-const getLength =(len: string | unknown[]):number=>{
-   return len.length
+const getLength = (len: string | unknown[]): number => {
+    return len.length
 }
-class Person{
-    name:string;
+class Person {
+    name: string;
     age: number
-    constructor(name:string, age:number){
+    constructor(name: string, age: number) {
         this.name = name,
-        this.age = age
+            this.age = age
     }
-    getDetails():string{
+    getDetails(): string {
         return `Name: ${this.name}, Age: ${this.age}`
     }
 }
-type Book = {
-  title:string;
-  rating: number;
+type BookRating = {
+    title: string;
+    rating: number;
 }
-const filterByRating =(bok:Book[]):Book[]=>{
-    console.log(bok)
-    const ratingBook = bok.filter((item)=>item.rating >=4)
+const filterByRating = (bok: BookRating[]): BookRating[] => {
+    const ratingBook = bok.filter((item) => item.rating >= 4)
     return ratingBook;
 }
-type User ={
-    id:number;
-    name:string;
-    email:string;
+type User = {
+    id: number;
+    name: string;
+    email: string;
     isActive: boolean;
 }
-const filterActiveUsers = (active: User[]):User[]=>{
-console.log(active)
-const activeUser = active.filter(item=>item.isActive)
-return activeUser
+const filterActiveUsers = (active: User[]): User[] => {
+    const activeUser = active.filter(item => item.isActive)
+    return activeUser;
 }
 interface Book {
     title: string;
@@ -49,24 +47,20 @@ interface Book {
     publishedYear: number;
     isAvailable: boolean;
 }
-const printBookDetails = (book: Book):string=>{
-    // console.log(book)
+const printBookDetails = (book: Book): string => {
     return `Title: ${book.title}, Author: ${book.author}, Published: ${book.publishedYear}, Available: ${book.isAvailable}`
 }
-type Total={
+type Total = {
     name: string;
     price: number;
     quantity: number;
-    discount?:number
+    discount?: number
 }
 
-const calculateTotalPrice = (price:Total[]):number=>{
-     const total = price.reduce((acc, {price, quantity,discount=0}) => {
-        // console.log(acc)
-        // console.log(current.quantity)
-        const totalPriceOneItem =(price * quantity)
-        return acc + (price * quantity) - (discount*totalPriceOneItem/100);
+const calculateTotalPrice = (price: Total[]): number => {
+    const total = price.reduce((acc, { price, quantity, discount = 0 }) => {
+        const totalPriceOneItem = (price * quantity)
+        return acc + (price * quantity) - (discount * totalPriceOneItem / 100);
     }, 0)
-    console.log(total)
-    return total
+    return total;
 }
